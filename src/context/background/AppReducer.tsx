@@ -1,5 +1,5 @@
 import Actions, { SetStateAction, SetTransactionAction } from '../contextActions';
-import { IAppState } from './AppState';
+import { IAppState } from './AppContext';
 
 type AppAction = SetTransactionAction | SetStateAction;
 

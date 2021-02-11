@@ -5,10 +5,12 @@ import { BaseService } from "./infrastructure/BaseService";
  * Value is of type `number` for simplification
  */
 export interface Transaction {
-    id: number
+    id: string,
     to: string
     from: string
-    value: number 
+    value: number,
+    date: Date,
+    processed: boolean, // Has the transaction be processed
 }
 
 export interface TransactionsServiceState {
@@ -34,21 +36,36 @@ export class TransactionsService extends BaseService<TransactionsServiceState> {
         return new Promise<void>((resolve) => {
             setTimeout(() => {
                 resolve(
-
+                    this.updateState(newTransaction)
                 )
             }, 300);
         })
     }
 
     /**
+     * It updates a transaction state
+     * @param {string} txHash The transaction hash
+     */
+    public async updateTranState(txHash: string): Promise<void> {
+        return new Promise<void>((resolve) => {
+            setTimeout(() => {
+                this.updateTransState(txHash);
+                resolve(
+
+                )
+            }, 300);
+
+        });
+    }
+    /**
      * It returns the list of transactions
      * TODO: Return the list via the promise resolve function
      */
-    public async getListOfTransactions(): Promise<Array<Transaction>>  {
+    public async getListOfTransactions(): Promise<Array<Transaction>> {
         return new Promise<Array<Transaction>>((resolve) => {
             setTimeout(() => {
                 resolve(
-
+                    this.getState().transactions
                 )
             }, 300);
         })
