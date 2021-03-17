@@ -1,4 +1,4 @@
-# Blank Wallet Code Challenge
+# Simple Ether Sender
 
 React app with typescript template
 
