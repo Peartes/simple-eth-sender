@@ -75,7 +75,7 @@ const useEtherProvider = () => {
     setCleanBalance(Number(balance.replace('.', '')) / Math.pow(10, 18));
     // Set the app state
     // @ts-ignore
-    transactions.setState({ address, balance: Number(balance.replace('.', '')) / Math.pow(10, 18), pubk: formAddr });
+    transactions.setState({ address, balance: Number(balance).toFixed(5), pubk: formAddr });
     // Set up a listener if account changes
     // @ts-ignore
     window.ethereum.on('accountsChanged', async function (accounts) {
@@ -112,7 +112,7 @@ const useEtherProvider = () => {
         // Let's update the app state
         transactions.addTransaction(undefined, transaction.hash);
         // @ts-ignore
-        transactions.setState({ balance: Number(remainingBalance.replace('.', '')) / Math.pow(10, 18) });
+        transactions.setState({ balance: Number(remainingBalance).toFixed(5) });
       })
       .catch(err => console.error(err))
   }
